@@ -70,16 +70,17 @@ public class View implements Observer{
         this.take.setLayoutY(10.0D);
         this.take.setText("Prise");
         this.gard.setText("Garde sans le Chien");
-        this.gard.setLayoutX(1200.0D);
+        this.gard.setLayoutX(1000.0D);
         this.gard.setLayoutY(10.0D);
         this.replay.setText("Rejouer");
-        this.replay.setLayoutX(400.0D);
+        this.replay.setLayoutX(00.0D);
         this.replay.setLayoutY(10.0D);
 
         this.root.getChildren().add(this.distribution);
         this.root.getChildren().add(this.returnedAll);
         this.root.getChildren().add(this.sort);
         this.root.getChildren().add(this.take);
+        this.root.getChildren().add(this.gard);
         this.root.getChildren().add(this.replay);
 
 
