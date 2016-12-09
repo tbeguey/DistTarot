@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.Enumeration.Notification;
 import sample.Enumeration.TypeCard;
+import sample.Exception.RemoveRefusedException;
 import sample.Model.CardModel;
 import sample.Model.Model;
 
@@ -137,7 +138,11 @@ public class View implements Observer{
                             c.getCardModel().getNumero() == 0 ||
                             (c.getCardModel().getNumero() == 1
                                     && c.getCardModel().getColor() == TypeCard.Trump)){
-                        System.out.println("EXCEPTION");
+                        try {
+                            throw new RemoveRefusedException(c.getCardModel().getNumero(), c.getCardModel().getColor());
+                        } catch (RemoveRefusedException e) {
+                            e.printStackTrace();
+                        }
                     }
                     else{
                         model.getGap().add(c.getCardModel());

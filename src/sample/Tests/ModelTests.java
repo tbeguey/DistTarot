@@ -3,6 +3,9 @@ package sample.Tests;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import sample.Enumeration.TypeCard;
+import sample.Exception.LittleDryException;
+import sample.Model.CardModel;
 import sample.Model.Model;
 
 /**
@@ -66,11 +69,11 @@ public class ModelTests {
             model.distribution();
         }
         model.sortHand();
-        for (int i = 1; i <= model.getPlayers().get(0).getCards().size(); i++){
+        for (int i = 1; i < model.getPlayers().get(0).getCards().size(); i++){
             if(model.getPlayers().get(0).getCards().get(i-1).getColor() == model.getPlayers().get(0).getCards().get(i).getColor()){
-                //Assert.assert();
+                Assert.assertTrue(model.getPlayers().get(0).getCards().get(i-1).getNumero()
+                        < model.getPlayers().get(0).getCards().get(i).getNumero());
             }
         }
-
     }
 }

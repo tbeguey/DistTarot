@@ -2,6 +2,7 @@ package sample.Model;
 
 import sample.Enumeration.Notification;
 import sample.Enumeration.TypeCard;
+import sample.Exception.LittleDryException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -178,7 +179,7 @@ public class Model extends java.util.Observable {
         handHeart.clear();
     }
 
-    public void testLittleDry(){ // a tester aussi
+    public void LittleDry() throws LittleDryException { // a tester aussi
         if(!littleDry){
             for(int i=0;i<players.size();i++){
                 int cpt_atout = 0;
@@ -193,7 +194,7 @@ public class Model extends java.util.Observable {
             }
         }
         if(littleDry){
-            System.out.println("PETIT SEC"); // a modifier
+            throw new LittleDryException();
         }
     }
 
