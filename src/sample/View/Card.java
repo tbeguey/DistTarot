@@ -1,6 +1,7 @@
 package sample.View;
 
 import javafx.animation.*;
+import javafx.geometry.Point3D;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -73,24 +74,26 @@ public class Card extends Group {
     }
 
     public void flip() {
+        back.setOpacity(1);
         this.isFlipped = !this.isFlipped;
-
-        final RotateTransition rotateOutFront = new RotateTransition(Duration.millis(halfFlipDuration), front);
-        rotateOutFront.setInterpolator(Interpolator.LINEAR);
-        rotateOutFront.setAxis(Rotate.Y_AXIS);
-        rotateOutFront.setFromAngle(90);
-        rotateOutFront.setToAngle(0);
-        //
-        final RotateTransition rotateInBack = new RotateTransition(Duration.millis(halfFlipDuration), back);
+        final RotateTransition rotateInBack = new RotateTransition(Duration.millis(1000), back);
         rotateInBack.setInterpolator(Interpolator.LINEAR);
-        rotateInBack.setAxis(Rotate.Y_AXIS);
+        rotateInBack.setAxis(new Point3D(0,1,0));
         rotateInBack.setFromAngle(0);
-        rotateInBack.setToAngle(90);
+        rotateInBack.setToAngle(180);
 
-        rotateInBack.setOnFinished(event -> {front.setOpacity(1); back.setOpacity(0);});
-        //
 
-        new SequentialTransition(rotateOutFront, rotateInBack).play();
+        final RotateTransition rotateOutFront = new RotateTransition(Duration.millis(1000), front);
+        rotateOutFront.setInterpolator(Interpolator.LINEAR);
+        rotateOutFront.setAxis(new Point3D(0,-1,0));
+        rotateOutFront.setFromAngle(0);
+        rotateOutFront.setToAngle(360);
+
+        front.setOpacity(0);
+
+        rotateInBack.play();
+        rotateInBack.setOnFinished(event -> { rotateOutFront.play();back.setOpacity(0);front.setOpacity(1);});
+
     }
 
     public void move(int posX, int posY){
