@@ -43,7 +43,10 @@ public class Card extends Group {
         this.getChildren().add(front);
         this.getChildren().add(back);
         this.isFlipped = false;
-        this.setOnMouseClicked(event -> this.flip());
+        this.setOnMouseClicked(event -> {
+            if(!cardModel.isInDog())
+                this.flip();
+        });
     }
 
 /*    void flip() {
