@@ -2,6 +2,9 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import sample.Model.Model;
+import sample.View.Card;
+import sample.View.View;
 
 public class Controller
 {

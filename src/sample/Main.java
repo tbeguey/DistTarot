@@ -2,6 +2,8 @@ package sample;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import sample.Model.Model;
+import sample.View.View;
 
 public class Main
         extends Application
