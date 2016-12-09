@@ -2,7 +2,11 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+<<<<<<< HEAD
 import javafx.stage.Window;
+=======
+import sample.Exception.LittleDryException;
+>>>>>>> ab70ae411e76ce8c59da49428055ffd48c73fdaf
 import sample.Model.Model;
 import sample.View.Card;
 import sample.View.View;
@@ -43,7 +47,11 @@ public class Controller
                     view.setPositionDogX(350);
                     view.setPositionDogY(700);
                     model.sortHand();
-                    model.testLittleDry(); // on test le petit sec une fois que toutes les cartes sont distribuées et triées
+                    try {
+                        model.LittleDry(); // on test le petit sec une fois que toutes les cartes sont distribuées et triées
+                    } catch (LittleDryException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
