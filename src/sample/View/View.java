@@ -60,27 +60,23 @@ public class View implements Observer{
         this.distribution.setLayoutX(200.0D);
         this.distribution.setLayoutY(10.0D);
         this.distribution.setText("Distribution");
-        this.returnedAll.setLayoutX(400.0D);
+        this.returnedAll.setLayoutX(200.0D);
         this.returnedAll.setLayoutY(10.0D);
         this.returnedAll.setText("Retourner toutes les cartes");
-        this.sort.setLayoutX(600.0D);
+        this.sort.setLayoutX(200.0D);
         this.sort.setLayoutY(10.0D);
         this.sort.setText("Trier");
-        this.take.setLayoutX(800.0D);
+        this.take.setLayoutX(400.0D);
         this.take.setLayoutY(10.0D);
         this.take.setText("Prise");
         this.gard.setText("Garde sans le Chien");
-        this.gard.setLayoutX(1000.0D);
+        this.gard.setLayoutX(600.0D);
         this.gard.setLayoutY(10.0D);
         this.replay.setText("Rejouer");
-        this.replay.setLayoutX(00.0D);
+        this.replay.setLayoutX(05.0D);
         this.replay.setLayoutY(10.0D);
 
         this.root.getChildren().add(this.distribution);
-        this.root.getChildren().add(this.returnedAll);
-        this.root.getChildren().add(this.sort);
-        this.root.getChildren().add(this.take);
-        this.root.getChildren().add(this.gard);
         this.root.getChildren().add(this.replay);
 
 
@@ -228,7 +224,10 @@ public class View implements Observer{
         }
     }
 
-    public Stage getWindow(){return window;}
+    public Stage getWindow() { return window; }
+
+    public Group getRoot() { return root; }
+
     public Button getDistribution() {
         return distribution;
     }
@@ -247,5 +246,5 @@ public class View implements Observer{
 
     public Button getGard() { return gard; }
 
-    public Button getReplay(){return replay;}
+    public Button getReplay() { return replay; }
 }

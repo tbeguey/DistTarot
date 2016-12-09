@@ -24,6 +24,8 @@ public class Controller
                 for(int i=0;i<6;i++){
                     model.distribution();
                 }
+                view.getRoot().getChildren().add(view.getReturnedAll());
+                view.getRoot().getChildren().remove(view.getDistribution());
             }
         });
 
@@ -31,6 +33,9 @@ public class Controller
             @Override
             public void handle(ActionEvent event) {
                 view.returnedAllCard();
+
+                view.getRoot().getChildren().add(view.getSort());
+                view.getRoot().getChildren().remove(view.getReturnedAll());
             }
         });
 
@@ -50,6 +55,9 @@ public class Controller
                         e.printStackTrace();
                     }
                 }
+                view.getRoot().getChildren().add(view.getTake());
+                view.getRoot().getChildren().add(view.getGard());
+                view.getRoot().getChildren().remove(view.getSort());
             }
         });
 
