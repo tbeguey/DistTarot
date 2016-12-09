@@ -99,7 +99,7 @@ public class Card extends Group {
 
     }
 
-    public void move(int posX, int posY){
+    public void move(int posX, int posY, int idJoueur){
         TranslateTransition translateTransitionFront = new TranslateTransition(Duration.millis(MoveDuration), front);
         translateTransitionFront.setToX(posX);
         translateTransitionFront.setToY(posY);
@@ -108,7 +108,16 @@ public class Card extends Group {
         translateTransitionBack.setToX(posX);
         translateTransitionBack.setToY(posY);
 
-        new ParallelTransition(translateTransitionFront, translateTransitionBack).play();
+        ParallelTransition parallelTransition = new ParallelTransition(translateTransitionFront, translateTransitionBack);
+
+        if(idJoueur > 1){
+            parallelTransition.setOnFinished(event -> {
+                front.setOpacity(0);
+                back.setOpacity(0);
+            });
+        }
+
+        parallelTransition.play();
     }
 
     public void moveGard(){

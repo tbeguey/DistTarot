@@ -98,7 +98,7 @@ public class View implements Observer{
 
     /* Déplace la carte vers le deck du joueur courant */
     public void updateAddCurrentPlayer(Card c){
-        c.move(positionCardX-positionDeckX,positionCardY-positionDeckY);
+        c.move(positionCardX-positionDeckX,positionCardY-positionDeckY, 0);
         cardPlaced++;
         this.positionCardX += 150;
         if (cardPlaced == 9) {
@@ -113,19 +113,19 @@ public class View implements Observer{
 
     /* Déplace la carte vers le Chien */
     public void updateAddDog(Card c){
-        c.move(positionDogX-positionDeckX,positionDogY-positionDeckY);
+        c.move(positionDogX-positionDeckX,positionDogY-positionDeckY, -1);
         this.positionDogX +=150;
     }
     /*Déplace la carte vers un des 3 autres joueurs */
     public void updateAddOtherPlayer(Card c){
         if(model.getIdPlayerDistrib() == 1){
-            c.move(-900,0);
+            c.move(-1500, 0, 1);
         }
         else if(model.getIdPlayerDistrib() == 2){
-            c.move(0,500);
+            c.move(0, 1000, 2);
         }
         else if(model.getIdPlayerDistrib() == 3){
-            c.move(900,0);
+            c.move(1500, 0, 3);
         }
     }
 
