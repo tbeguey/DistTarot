@@ -122,16 +122,16 @@ public class Card extends Group {
 
     public void moveGard(){
         TranslateTransition translateTransitionFrontX = new TranslateTransition(Duration.millis(GardMoveDuration), front);
-        translateTransitionFrontX.setToX(500);
+        translateTransitionFrontX.setToX(1500);
         TranslateTransition translateTransitionBackX = new TranslateTransition(Duration.millis(GardMoveDuration), back);
-        translateTransitionBackX.setToX(500);
+        translateTransitionBackX.setToX(1500);
 
         ParallelTransition parallelTransitionX = new ParallelTransition(translateTransitionFrontX, translateTransitionBackX);
 
         TranslateTransition translateTransitionFrontY = new TranslateTransition(Duration.millis(500), front);
-        translateTransitionFrontY.setToY(500);
+        translateTransitionFrontY.setToY(1500);
         TranslateTransition translateTransitionBackY = new TranslateTransition(Duration.millis(500), back);
-        translateTransitionBackY.setToY(500);
+        translateTransitionBackY.setToY(1500);
 
         ParallelTransition parallelTransitionY = new ParallelTransition(translateTransitionFrontY, translateTransitionBackY);
 

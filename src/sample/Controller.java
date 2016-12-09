@@ -2,7 +2,6 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.stage.Window;
 import sample.Exception.LittleDryException;
 import sample.Model.Model;
 import sample.View.Card;
@@ -75,7 +74,7 @@ public class Controller
                 view.setPositionDogX(350);
                 view.setPositionDogY(700);
                 model.sortHand();
-                view.removeCard();
+                view.changeActionToRemoveCard();
             }
         });
 

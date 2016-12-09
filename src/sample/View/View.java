@@ -36,6 +36,8 @@ public class View implements Observer{
     private int cardPlaced = 0;
     private ArrayList<Card> cardsView = new ArrayList();
 
+
+    /* Création des cartes ( coté vue ) */
     public void initialisePicture(){
         for (int i = 0; i < model.getCardsDeck().size(); i++) {
             if(model.getCardsDeck().get(i).getColor() == TypeCard.Trump){
@@ -129,7 +131,8 @@ public class View implements Observer{
         }
     }
 
-    public void removeCard(){
+    /* Change l'action des cartes (pour la Prise) afin que les cartes soient retirés de la main du joueur */
+    public void changeActionToRemoveCard(){
         for(int i=0;i<model.getPlayers().get(0).getCards().size();i++) {
             int finalI = i;
             Card c = whichCardView(model.getPlayers().get(0).getCards().get(finalI));
@@ -147,7 +150,7 @@ public class View implements Observer{
                         }
                     }
                     else{
-                        c.setOnMouseClicked(event1 -> {});
+                        c.setOnMouseClicked(event1 -> {}); // plus d'action sur le clique de cette carte
                         model.getGap().add(c.getCardModel());
                         model.getPlayers().get(0).removeCardsToAPlayer(c.getCardModel());
                         c.moveGard();
@@ -164,24 +167,19 @@ public class View implements Observer{
             });
         }
     }
-
+    /* Affiche le deck de carte */
     public void updateDeck(){
         for (int i = 0; i < cardsView.size(); i++) {
             this.root.getChildren().add(cardsView.get(i));
         }
     }
-
+    /* Retourne toutes les cartes sauf celles du Chien */
     public void returnedAllCard(){
         for (int i = 0; i < cardsView.size(); i++) {
             if(!cardsView.get(i).getCardModel().isInDog())
                 cardsView.get(i).flip();
         }
     }
-
-    public void updateRemove(Card c){
-        this.root.getChildren().remove(c);
-    }
-
 
     public void setPositionCardX(int positionCardX) {
         this.positionCardX = positionCardX;
