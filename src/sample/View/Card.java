@@ -41,12 +41,13 @@ public class Card extends Group {
         this.setOnMouseClicked(event -> {
             if(!cardModel.isInDog())
                 this.flip();
+
         });
     }
 
     /* Retourne la carte */
     public void flip() {
-        back.setOpacity(1);
+        //front.setOpacity(0);
         this.isFlipped = !this.isFlipped;
         final RotateTransition rotateInBack = new RotateTransition(Duration.millis(1000), back);
         rotateInBack.setInterpolator(Interpolator.LINEAR);
@@ -56,14 +57,40 @@ public class Card extends Group {
 
         final RotateTransition rotateOutFront = new RotateTransition(Duration.millis(1000), front);
         rotateOutFront.setInterpolator(Interpolator.LINEAR);
-        rotateOutFront.setAxis(new Point3D(0,-1,0));
-        rotateOutFront.setFromAngle(0);
+        rotateOutFront.setAxis(new Point3D(0,1,0));
+        rotateOutFront.setFromAngle(80);
         rotateOutFront.setToAngle(360);
 
-        front.setOpacity(0);
 
         rotateInBack.play();
         rotateInBack.setOnFinished(event -> { rotateOutFront.play();back.setOpacity(0);front.setOpacity(1);});
+        rotateInBack.setOnFinished(event -> { rotateOutFront.play();front.setOpacity(1);back.setOpacity(0);});
+
+
+
+    }
+
+    public void flipAlrdyReturned()
+    {
+        front.setOpacity(0);
+        this.isFlipped = !this.isFlipped;
+        final RotateTransition rotateInBack = new RotateTransition(Duration.millis(1000), back);
+        rotateInBack.setInterpolator(Interpolator.LINEAR);
+        rotateInBack.setAxis(new Point3D(0,1,0));
+        rotateInBack.setFromAngle(0);
+        rotateInBack.setToAngle(90);
+
+
+        final RotateTransition rotateOutFront = new RotateTransition(Duration.millis(1000), front);
+        rotateOutFront.setInterpolator(Interpolator.LINEAR);
+        rotateOutFront.setAxis(new Point3D(0,1,0));
+        rotateOutFront.setFromAngle(0);
+        rotateOutFront.setToAngle(180);
+
+
+        rotateOutFront.play();
+        rotateOutFront.setOnFinished(event -> { rotateOutFront.play();back.setOpacity(0);front.setOpacity(1);});
+        rotateOutFront.setOnFinished(event -> {back.setOpacity(0);});
     }
 
     /* Effectue un déplacement de translation de la carte */
@@ -111,4 +138,5 @@ public class Card extends Group {
     public CardModel getCardModel() {
         return cardModel;
     }
+    public ImageView getBack(){return back;}
 }

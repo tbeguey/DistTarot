@@ -1,4 +1,5 @@
 package sample.Tests;
+/*
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -8,9 +9,9 @@ import sample.Exception.LittleDryException;
 import sample.Model.CardModel;
 import sample.Model.Model;
 
-/**
- * Created by theo on 09/12/16.
- */
+
+  Created by theo on 09/12/16.
+
 public class ModelTests {
     private Model model = new Model();
 
@@ -77,3 +78,4 @@ public class ModelTests {
         }
     }
 }
+*/

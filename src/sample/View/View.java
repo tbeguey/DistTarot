@@ -178,6 +178,7 @@ public class View implements Observer{
         for (int i = 0; i < cardsView.size(); i++) {
             if(!cardsView.get(i).getCardModel().isInDog())
                 cardsView.get(i).flip();
+
         }
     }
 
@@ -225,6 +226,7 @@ public class View implements Observer{
     public Stage getWindow() { return window; }
 
     public Group getRoot() { return root; }
+
 
     public Button getDistribution() {
         return distribution;
