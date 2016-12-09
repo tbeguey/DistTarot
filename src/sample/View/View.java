@@ -25,6 +25,7 @@ public class View implements Observer{
     private Button sort = new Button();
     private Button take = new Button();
     private Button gard = new Button();
+    private Button replay = new Button();
     private int positionDeckX = 750;
     private int positionDeckY = 400;
     private int positionCardX = 150;
@@ -70,12 +71,16 @@ public class View implements Observer{
         this.gard.setText("Garde sans le Chien");
         this.gard.setLayoutX(1200.0D);
         this.gard.setLayoutY(10.0D);
+        this.replay.setText("Rejouer");
+        this.replay.setLayoutX(400.0D);
+        this.replay.setLayoutY(10.0D);
 
         this.root.getChildren().add(this.distribution);
         this.root.getChildren().add(this.returnedAll);
         this.root.getChildren().add(this.sort);
         this.root.getChildren().add(this.take);
-        this.root.getChildren().add(this.gard);
+        this.root.getChildren().add(this.replay);
+
 
         this.window.setScene(this.scene);
         this.window.show();
@@ -216,6 +221,7 @@ public class View implements Observer{
         }
     }
 
+    public Stage getWindow(){return window;}
     public Button getDistribution() {
         return distribution;
     }
@@ -233,4 +239,6 @@ public class View implements Observer{
     }
 
     public Button getGard() { return gard; }
+
+    public Button getReplay(){return replay;}
 }

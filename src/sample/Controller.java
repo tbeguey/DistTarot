@@ -2,6 +2,7 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.stage.Window;
 import sample.Model.Model;
 import sample.View.Card;
 import sample.View.View;
@@ -76,5 +77,22 @@ public class Controller
                 }
             }
         });
+
+        view.getReplay().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+
+                view.getWindow().close();
+
+                new Model();
+                new View(model);
+                model.initialiseCardsDeck();
+
+               // new Controller();
+                view.updateDeck();
+            }
+        });
+
+
     }
 }
