@@ -68,7 +68,6 @@ public class Controller
                 view.setPositionDogY(700);
                 model.sortHand();
                 view.removeCard();
-                System.out.println(model.getPlayers().get(0).getCards().size());
             }
         });
 

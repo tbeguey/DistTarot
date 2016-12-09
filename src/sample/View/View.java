@@ -151,6 +151,7 @@ public class View implements Observer{
                         }
                     }
                     else{
+                        c.setOnMouseClicked(event1 -> {});
                         model.getGap().add(c.getCardModel());
                         model.getPlayers().get(0).removeCardsToAPlayer(c.getCardModel());
                         c.moveGard();
