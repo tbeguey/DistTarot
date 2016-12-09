@@ -92,18 +92,12 @@ public class Controller
         view.getReplay().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
                 view.getWindow().close();
-
                 new Model();
                 new View(model);
                 model.initialiseCardsDeck();
-
-               // new Controller();
                 view.updateDeck();
             }
         });
-
-
     }
 }

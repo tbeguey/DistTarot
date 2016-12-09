@@ -14,22 +14,16 @@ public class Model extends java.util.Observable {
     private ArrayList<CardModel> dog = new ArrayList();
     private ArrayList<CardModel> gap = new ArrayList<>();
     private ArrayList<Player> players = new ArrayList<>();
-    private boolean littleDry = false;
-
 
     public Model() {
-        Player p1 = new Player();
-        Player p2 = new Player();
-        Player p3 = new Player();
-        Player p4 = new Player();
-        players.add(p1);
-        players.add(p2);
-        players.add(p3);
-        players.add(p4);
+        for (int i = 0; i < 4; i++) {
+            players.add(new Player());
+        }
         idPlayerDistrib = 0;
         initialiseCardsDeck();
     }
 
+    /* Création des 78 cartes du jeu */
     public void initialiseCardsDeck(){
         for (int i = 1; i <= 21; i++){
             cardsDeck.add(new CardModel(i, TypeCard.Trump));
@@ -41,10 +35,10 @@ public class Model extends java.util.Observable {
             cardsDeck.add(new CardModel(i,TypeCard.Spade));
         }
         cardsDeck.add(new CardModel(0,TypeCard.Excuse));
-        Collections.shuffle(cardsDeck); // mélange
+        Collections.shuffle(cardsDeck); // On mélange le jeu
     }
 
-
+    /*Ajoute une carte à un joueur et la retire du deck */
     public void addCardHand(){
         if (players.get(idPlayerDistrib).getCards().size() != 18 && cardsDeck.size() !=0){
             CardModel c = cardsDeck.get(cardsDeck.size()-1);
@@ -62,7 +56,12 @@ public class Model extends java.util.Observable {
             cardsDeck.remove(c);
         }
     }
-
+    /* Distribue les cartes :
+        3 par 3,
+        avec une carte qui part au Chien à chaque tour,
+        cette derniere est gérer pour ne pas etre la premiere ni la derniere carte du deck,
+        lors du jeu la distribution est rapide, toutes les cartes sont envoyés direct.
+     */
     public void distribution(){
         if (players.get(0).getCards().size() == 15 && dog.size() != 6){
             addCardDog();
@@ -79,6 +78,7 @@ public class Model extends java.util.Observable {
         }
     }
 
+    /* Ajoute une carte au Chien */
     public void addCardDog() {
         CardModel c = cardsDeck.get(cardsDeck.size()-1);
         c.setInDog(true);
@@ -89,13 +89,15 @@ public class Model extends java.util.Observable {
         cardsDeck.remove(c);
     }
 
-    public void dogToHand(){ // a tester
+    /* Envoie toutes les cartes du chien au joueur (pour la prise )*/
+    public void dogToHand(){
         for(int i=0;i<dog.size();i++){
             players.get(0).getCards().add(dog.get(i));
         }
         dog.clear();
     }
 
+    /* Trie les cartes */
     public void sortHand(){
         ArrayList<CardModel> handSpade = new ArrayList();
         ArrayList<CardModel> handHeart = new ArrayList();
@@ -179,23 +181,19 @@ public class Model extends java.util.Observable {
         handHeart.clear();
     }
 
-    public void LittleDry() throws LittleDryException { // a tester aussi
-        if(!littleDry){
+    /* Teste si le Petit Sec est présent dans un des decks des 4 joueurs */
+    public void LittleDry() throws LittleDryException {
             for(int i=0;i<players.size();i++){
                 int cpt_atout = 0;
-                for(int j=0;j<players.get(i).getCards().size();j++){ // on calcule le nombre d'atouts
+                for(int j=0;j<players.get(i).getCards().size();j++){
                     if(players.get(i).getCards().get(j).getColor() == TypeCard.Trump){
-                        cpt_atout += players.get(i).getCards().get(j).getNumero();
+                        cpt_atout += players.get(i).getCards().get(j).getNumero(); // on additione la valeur de la carte au compteur
                     }
                 }
-                if(cpt_atout == 1){ // si il a qu'un atout
-                    littleDry = true;
+                if(cpt_atout == 1){ // si la valeur n'est que de 1, c'est qu'il a un qu'un seul atout, le Petit Sec
+                    throw new LittleDryException();
                 }
             }
-        }
-        if(littleDry){
-            throw new LittleDryException();
-        }
     }
 
     public ArrayList<Player> getPlayers() {

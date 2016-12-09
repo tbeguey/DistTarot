@@ -32,6 +32,7 @@ public class CardModel implements Comparable<CardModel>{
         this.inDog = inDog;
     }
 
+    /* Compare les cartes selon leur numéro, pour les trier du plus petit au plus grand */
     @Override
     public int compareTo(CardModel c){
         return this.numero-c.numero;

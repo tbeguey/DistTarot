@@ -95,7 +95,7 @@ public class View implements Observer{
                 return cardsView.get(i);
             }
         }
-        return null;
+        return null; // si la carte n'es pas trouvé
     }
 
     /* Déplace la carte vers le deck du joueur courant */

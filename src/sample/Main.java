@@ -15,28 +15,16 @@ public class Main
 {
     private Model model;
     private View view;
-     private Controller controller;
+    private Controller controller;
 
     public void start(Stage primaryStage)
-
     {
         this.model = new Model();
         this.view = new View(this.model);
         model.addObserver(view);
         this.controller = new Controller(this.model,this.view);
         view.updateDeck();
-
-        view.getReplay().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-            view.getWindow().close();
-                start(new Stage());
-            }
-        });
     }
 
-    public static void main(String[] args)
-    {
-        launch(args);
-    }
+    public static void main(String[] args) { launch(args); }
 }
